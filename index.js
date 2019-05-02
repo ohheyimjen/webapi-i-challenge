@@ -1,13 +1,16 @@
 // implement your API here
+require('dotenv').config();
 const express = require("express");
 const db = require("./data/db");
+
+const port = process.env.PORT || 5000
 
 const server = express();
 
 server.use(express.json());
 
-server.listen(4000, () => {
-  console.log("Server running on localhost:4000");
+server.listen(port, () => {
+  console.log(`Server running on localhost:${port}`);
 });
 
 server.get("/", (req, res) => {
@@ -65,7 +68,7 @@ server.delete("/api/users/:id", (req, res) => {
 });
 
 server.put("/api/users/:id", (req, res) => {
-  const { id } = req.params;
+  const {  } = req.params;
   const changes = req.body;
 
   db.update(id, changes)
